@@ -4,15 +4,24 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Wallet;
 use App\Repository\WalletRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class WalletService extends BaseService
 {
-    /**
-     * WalletService constructor.
-     */
-    public function __construct(WalletRepository $repository)
+    public function __construct(protected WalletRepository $walletRepository)
     {
-        parent::__construct($repository);
+        parent::__construct($walletRepository);
+    }
+
+    public function getUserWallets(string $userId): Collection
+    {
+        return $this->walletRepository->model::where('user_id', $userId)->get();
+    }
+
+    public function getWalletById(string $id): ?Wallet
+    {
+        return $this->walletRepository->get($id);
     }
 }

@@ -60,7 +60,8 @@ class PersonalAccessToken extends SanctumPersonalAccessToken
 
         // Cache if found
         if ($item) {
-            \Illuminate\Support\Facades\Cache::put($cacheKey, $item->attributesToArray(), now()->addDay());
+            $minutes = config('sanctum.expiration', 1440);
+            \Illuminate\Support\Facades\Cache::put($cacheKey, $item->toArray(), now()->addMinutes($minutes));
         }
 
         return $item;
@@ -69,12 +70,17 @@ class PersonalAccessToken extends SanctumPersonalAccessToken
     /**
      * The "booted" method of the model.
      */
+    /**
+     * The "booted" method of the model.
+     */
     protected static function booted(): void
     {
         // Clear cache on update or delete
         static::saved(function ($token) {
+            $token->refresh(); // Ensure we have latest data including DB generated timestamps
             $cacheKey = "sanctum_token:{$token->token}";
-            \Illuminate\Support\Facades\Cache::put($cacheKey, $token->attributesToArray(), now()->addDay());
+            $minutes = config('sanctum.expiration', 1440);
+            \Illuminate\Support\Facades\Cache::put($cacheKey, $token->toArray(), now()->addMinutes($minutes));
         });
 
         static::deleted(function ($token) {
@@ -90,3 +96,4 @@ class PersonalAccessToken extends SanctumPersonalAccessToken
     {
         return $this->morphTo('tokenable');
     }
+}

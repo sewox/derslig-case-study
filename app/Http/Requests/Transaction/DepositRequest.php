@@ -19,7 +19,7 @@ class DepositRequest extends FormRequest
     {
         return [
             'amount' => ['required', 'numeric', 'min:0.01'],
-            'currency' => ['required', new Enum(WalletCurrency::class)],
+            'wallet_id' => ['required', 'uuid', 'exists:wallets,id'],
         ];
     }
 }

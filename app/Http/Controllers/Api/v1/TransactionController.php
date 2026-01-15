@@ -28,15 +28,11 @@ class TransactionController extends Controller
     public function deposit(DepositRequest $request): JsonResponse
     {
         $user = $request->user();
-        $currency = WalletCurrency::from($request->currency);
         
-        // Find user wallet for currency
-        $wallet = $this->walletService->getUserWallets($user->id)
-            ->where('currency', $currency)
-            ->first();
+        $wallet = $this->walletService->getWalletById($request->wallet_id);
 
-        if (! $wallet) {
-            return response()->json(['message' => 'Wallet not found for this currency'], 404);
+        if (! $wallet || $wallet->user_id !== $user->id) {
+            return response()->json(['message' => 'Wallet not found or does not belong to user'], 404);
         }
 
         try {

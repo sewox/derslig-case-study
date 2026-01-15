@@ -59,14 +59,11 @@ class TransactionController extends Controller
     public function withdraw(WithdrawRequest $request): JsonResponse
     {
         $user = $request->user();
-        $currency = WalletCurrency::from($request->currency);
         
-        $wallet = $this->walletService->getUserWallets($user->id)
-            ->where('currency', $currency)
-            ->first();
+        $wallet = $this->walletService->getWalletById($request->wallet_id);
 
-        if (! $wallet) {
-            return response()->json(['message' => 'Wallet not found'], 404);
+        if (! $wallet || $wallet->user_id !== $user->id) {
+            return response()->json(['message' => 'Wallet not found or does not belong to user'], 404);
         }
 
         try {

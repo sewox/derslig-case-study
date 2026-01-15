@@ -1,37 +1,82 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
-class BaseRepository
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
+abstract class BaseRepository implements BaseRepositoryInterface
 {
-    public function model()
+    protected Model $model;
+
+    /**
+     * BaseRepository constructor.
+     */
+    public function __construct()
     {
-        return $this->model;
+        $this->model = app($this->model());
     }
 
-    public function create($data)
+    /**
+     * Get the model class name.
+     */
+    abstract public function model(): string;
+
+    /**
+     * Create a new record.
+     */
+    public function create(array $data): Model
     {
         return $this->model->create($data);
     }
-    
-    public function update($id, $data)
+
+    /**
+     * Update an existing record.
+     *
+     * @param  int|string  $id
+     */
+    public function update($id, array $data): bool
     {
-        return $this->model->update($id, $data);
+        $record = $this->get($id);
+        if ($record) {
+            return $record->update($data);
+        }
+
+        return false;
     }
-    
-    public function delete($id)
+
+    /**
+     * Delete a record.
+     *
+     * @param  int|string  $id
+     */
+    public function delete($id): bool
     {
-        return $this->model->delete($id);
+        $record = $this->get($id);
+        if ($record) {
+            return (bool) $record->delete();
+        }
+
+        return false;
     }
-    
-    public function getAll()
+
+    /**
+     * Get all records.
+     */
+    public function getAll(): Collection
     {
         return $this->model->all();
     }
-    
-    public function get($id)
+
+    /**
+     * Get a single record by ID.
+     *
+     * @param  int|string  $id
+     */
+    public function get($id): ?Model
     {
         return $this->model->find($id);
     }
-    
 }

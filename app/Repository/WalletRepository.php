@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Models\User;
+use App\Models\Wallet;
 
-class UserRepository extends BaseRepository
+class WalletRepository extends BaseRepository
 {
     public function model(): string
     {
-        return User::class;
+        return Wallet::class;
     }
 }

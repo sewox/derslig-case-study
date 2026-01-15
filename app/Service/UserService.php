@@ -1,45 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
-use App\Models\User;
 use App\Repository\UserRepository;
 
 class UserService extends BaseService
 {
-    public function model()
+    /**
+     * UserService constructor.
+     */
+    public function __construct(UserRepository $repository)
     {
-        return User::class;
+        parent::__construct($repository);
     }
-    
-    public function repository()
-    {
-        return UserRepository::class;
-    }
-
-    public function create($data)
-    {
-        return $this->repository->create($data);
-    }
-    
-    public function update($id, $data)
-    {
-        return $this->repository->update($id, $data);
-    }
-    
-    public function delete($id)
-    {
-        return $this->repository->delete($id);
-    }
-    
-    public function getAll()
-    {
-        return $this->repository->getAll();
-    }
-    
-    public function get($id)
-    {
-        return $this->repository->get($id);
-    }
-    
 }

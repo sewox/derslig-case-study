@@ -233,7 +233,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"amount\": 1000,\n    \"currency\": \"TRY\"\n}",
+                            "raw": "{\n    \"amount\": 1000,\n    \"wallet_id\": \"WALLET_UUID_HERE\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"

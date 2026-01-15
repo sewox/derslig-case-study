@@ -50,6 +50,7 @@ We implemented a modern, scalable Layered Architecture:
 ## 5. Testing & Verification
 - **Seeders**: `DatabaseSeeder` creates an Admin user and 5 Demo users with funded wallets.
 - **Docker**: Redis configured for caching and potential queue handling (used in event listeners).
+- **Postman**: A complete [Postman Collection](Derslig_Digital_Wallet_API.postman_collection.json) is provided for testing all endpoints. Import it into Postman to get started.
 
 ## 6. Next Steps
 - Implement Unit and Feature tests.

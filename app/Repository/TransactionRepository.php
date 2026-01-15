@@ -30,8 +30,8 @@ class TransactionRepository extends BaseRepository
             ->whereHas('sourceWallet', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })
-            ->where('type', \App\Enums\TransactionType::TRANSFER)
-            ->where('created_at', '>=', now()->subMinutes($minutes))
+            ->where('transactions.type', \App\Enums\TransactionType::TRANSFER)
+            ->where('transactions.created_at', '>=', now()->subMinutes($minutes))
             ->distinct('target_wallet_id') // Distinct wallets usually implies distinct users if 1 wallet per currency. 
             // Better to check targetWallet -> user_id distinctness via join but wallets are unique per user-currency. 
             // Let's assume distinct target_wallet_id is good proxy or we do join.

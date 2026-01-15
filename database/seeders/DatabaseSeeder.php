@@ -19,6 +19,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Seed Configuration
+        \App\Models\Configuration::firstOrCreate(
+            ['key' => 'DAILY_TRANSFER_LIMIT_TRY'],
+            ['value' => '50000', 'description' => 'Daily transfer limit in TRY']
+        );
+        \App\Models\Configuration::firstOrCreate(
+            ['key' => 'DAILY_WITHDRAW_LIMIT_EUR'],
+            ['value' => '50000', 'description' => 'Daily withdraw limit in EUR']
+        );
+        \App\Models\Configuration::firstOrCreate(
+            ['key' => 'DAILY_WITHDRAW_LIMIT_USD'],
+            ['value' => '50000', 'description' => 'Daily withdraw limit in USD']
+        );
+
         // Create Admin
         $admin = User::create([
             'name' => 'Admin User',

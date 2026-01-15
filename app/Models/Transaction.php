@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
+use App\Enums\WalletCurrency;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +24,9 @@ class Transaction extends Model
         'performed_at' => 'datetime',
         'amount' => 'decimal:4',
         'fee' => 'decimal:4',
+        'type' => TransactionType::class,
+        'status' => TransactionStatus::class,
+        'currency' => WalletCurrency::class,
     ];
 
     public function sourceWallet(): BelongsTo

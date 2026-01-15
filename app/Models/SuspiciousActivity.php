@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\SuspiciousActivitySeverity;
+use App\Enums\SuspiciousActivityStatus;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +21,8 @@ class SuspiciousActivity extends Model
 
     protected $casts = [
         'details' => 'array',
+        'severity' => SuspiciousActivitySeverity::class,
+        'status' => SuspiciousActivityStatus::class,
     ];
 
     public function user(): BelongsTo

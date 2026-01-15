@@ -15,6 +15,10 @@ class CheckInsufficientBalance
     {
         // Only for outgoing transactions
         if (in_array($dto->type, [TransactionType::WITHDRAW, TransactionType::TRANSFER])) {
+            if (!$dto->sourceWallet) {
+                throw new InvalidArgumentException("Source wallet is required for this transaction type");
+            }
+            
             $totalRequired = $dto->amount + $dto->fee;
             
             if ($dto->sourceWallet->balance < $totalRequired) {

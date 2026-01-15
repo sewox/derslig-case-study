@@ -12,7 +12,7 @@ class TransactionDTO
 {
     public function __construct(
         public readonly User $user,
-        public readonly Wallet $sourceWallet,
+        public readonly ?Wallet $sourceWallet,
         public readonly ?Wallet $targetWallet,
         public readonly float $amount,
         public readonly TransactionType $type,

@@ -12,4 +12,15 @@ class TransactionRepository extends BaseRepository
     {
         return Transaction::class;
     }
+
+    public function getDailyTransfersForUser(string $userId)
+    {
+        return $this->model->newQuery()
+            ->whereHas('sourceWallet', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->where('type', \App\Enums\TransactionType::TRANSFER)
+            ->where('created_at', '>=', now()->startOfDay())
+            ->get(['amount', 'currency']);
+    }
 }

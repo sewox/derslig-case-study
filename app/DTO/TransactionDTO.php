@@ -18,7 +18,8 @@ class TransactionDTO
         public readonly TransactionType $type,
         public float $fee = 0.0,
         public ?string $description = null,
-        public ?string $ipAddress = null,
+        public ?string $ipAddress = null, // Add missing comma if needed
+        public \App\Enums\TransactionStatus $status = \App\Enums\TransactionStatus::COMPLETED,
     ) {
     }
 }

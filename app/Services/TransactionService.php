@@ -35,8 +35,9 @@ class TransactionService extends BaseService
                 ->send($dto)
                 ->through([
                     CheckInsufficientBalance::class,
+                    \App\Services\Transaction\Pipes\CheckDailyLimit::class,
                     CalculateFee::class,
-                    // TODO: Add FraudCheck pipe later
+                    \App\Services\Transaction\Pipes\FraudCheck::class,
                 ])
                 ->thenReturn();
 
@@ -51,7 +52,7 @@ class TransactionService extends BaseService
                 'fee' => $processedDto->fee,
                 'currency' => $activeWallet->currency, 
                 'type' => $processedDto->type,
-                'status' => TransactionStatus::COMPLETED,
+                'status' => $processedDto->status,
                 'description' => $processedDto->description,
                 'ip_address' => $processedDto->ipAddress,
                 'performed_at' => now(),

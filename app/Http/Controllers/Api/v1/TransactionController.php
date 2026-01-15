@@ -38,11 +38,8 @@ class TransactionController extends Controller
         try {
             $dto = new TransactionDTO(
                 user: $user,
-                sourceWallet: $wallet, // For Deposit, source is treated as the wallet receiving funds in our update logic override? 
-                // Wait, TransactionService logic for UpdateBalances:
-                // if Deposit: sourceWallet->increment.
-                // So yes, pass it as sourceWallet (or rethink DTO naming).
-                targetWallet: null,
+                sourceWallet: null,
+                targetWallet: $wallet,
                 amount: (float) $request->amount,
                 type: TransactionType::DEPOSIT,
                 description: 'Deposit via API'

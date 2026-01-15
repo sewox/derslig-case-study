@@ -17,7 +17,7 @@ class WalletService extends BaseService
 
     public function getUserWallets(string $userId): Collection
     {
-        return $this->walletRepository->model::where('user_id', $userId)->get();
+        return $this->walletRepository->getWalletsByUserId($userId);
     }
 
     public function getWalletById(string $id): ?Wallet

@@ -12,4 +12,9 @@ class WalletRepository extends BaseRepository
     {
         return Wallet::class;
     }
+
+    public function getWalletsByUserId(string $userId): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->model->newQuery()->where('user_id', $userId)->get();
+    }
 }

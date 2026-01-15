@@ -53,7 +53,7 @@ class AuthService extends BaseService
 
     public function login(array $credentials): ?array
     {
-        $user = $this->userRepository->model::where('email', $credentials['email'])->first();
+        $user = $this->userRepository->findByEmail($credentials['email']);
 
         if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             return null;

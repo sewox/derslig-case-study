@@ -22,7 +22,7 @@ class AuthController extends Controller
         $result = $this->authService->register($request->validated());
 
         return response()->json([
-            'message' => 'User registered successfully',
+            'message' => __('messages.auth.registered'),
             'data' => $result,
         ], 201);
     }
@@ -33,12 +33,12 @@ class AuthController extends Controller
 
         if (! $result) {
             return response()->json([
-                'message' => 'Invalid credentials',
+                'message' => __('messages.auth.invalid_credentials'),
             ], 401);
         }
 
         return response()->json([
-            'message' => 'Login successful',
+            'message' => __('messages.auth.login_success'),
             'data' => $result,
         ]);
     }
@@ -48,7 +48,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logged out successfully',
+            'message' => __('messages.auth.logout_success'),
         ]);
     }
 

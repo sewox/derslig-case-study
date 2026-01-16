@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\Services\FeeCalculator;
 
+use App\Services\ConfigurationService;
+
 class LowAmountFeeStrategy implements FeeCalculatorStrategy
 {
+    public function __construct(protected ConfigurationService $configurationService)
+    {
+    }
+
     public function calculate(float $amount): float
     {
-        // 0 - 1,000 TRY: Fixed 2 TRY
-        return 2.0;
+        // Fixed Fee
+        return $this->configurationService->getFloat('FEE_LOW_FIXED', 2.0);
     }
 }

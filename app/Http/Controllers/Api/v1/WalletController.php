@@ -30,7 +30,7 @@ class WalletController extends Controller
 
         // Security: Check if wallet belongs to user
         if (! $wallet || $wallet->user_id !== auth()->id()) {
-            return response()->json(['message' => 'Wallet not found'], 404);
+            return response()->json(['message' => __('messages.wallet.not_found')], 404);
         }
 
         return response()->json([

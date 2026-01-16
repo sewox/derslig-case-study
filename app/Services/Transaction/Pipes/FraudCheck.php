@@ -14,11 +14,14 @@ use App\Services\ExchangeRateService;
 use Closure;
 use Carbon\Carbon;
 
+use App\Services\ConfigurationService;
+
 class FraudCheck
 {
     public function __construct(
         protected TransactionRepository $transactionRepository,
-        protected ExchangeRateService $exchangeRateService
+        protected ExchangeRateService $exchangeRateService,
+        protected ConfigurationService $configurationService
     ) {
     }
 
@@ -32,23 +35,26 @@ class FraudCheck
             $dto->sourceWallet?->currency ?? $dto->targetWallet?->currency // Depending on context, conversion base
         );
 
-        // Rule 1: 5+ transfers to different users within 1 hour
+        // Rule 1: Velocity Check (e.g. transfers to distinct users)
         if ($dto->type === TransactionType::TRANSFER) {
-            $uniqueRecipients = $this->transactionRepository->countUsersTransferredTo($user->id, 60);
-            // Including current one? countUsersTransferredTo checks history. 
-            // If accumulated history >= 4, adding this one makes 5.
-            if ($uniqueRecipients >= 4) {
+            $window = $this->configurationService->getInt('FRAUD_CHECK_VELOCITY_WINDOW_MINUTES', 60);
+            $limit = $this->configurationService->getInt('FRAUD_CHECK_VELOCITY_LIMIT', 4);
+            
+            $uniqueRecipients = $this->transactionRepository->countUsersTransferredTo($user->id, $window);
+            if ($uniqueRecipients >= $limit) {
                  $this->triggerFraction($dto, 'velocity_different_users', 'High frequency transfers to different users');
             }
         }
 
-        // Rule 2: 5000+ TRY transaction between 02:00-06:00
+        // Rule 2: Night Transaction Check
+        $nightStart = $this->configurationService->getInt('FRAUD_CHECK_NIGHT_START_HOUR', 2);
+        $nightEnd = $this->configurationService->getInt('FRAUD_CHECK_NIGHT_END_HOUR', 6);
+        $nightAmountLimit = $this->configurationService->getFloat('FRAUD_CHECK_NIGHT_AMOUNT_LIMIT', 5000);
+
         $hour = now()->hour;
-        if ($hour >= 2 && $hour < 6) {
-            if ($amountTry > 5000) {
-                // Require manual approval
+        if ($hour >= $nightStart && $hour < $nightEnd) {
+            if ($amountTry > $nightAmountLimit) {
                  $dto->status = TransactionStatus::PENDING_REVIEW;
-                 // Event triggered? Table says "Appropriate event should be triggered".
                  SuspiciousActivityDetected::dispatch(
                     $user, 
                     'night_transaction', 
@@ -58,9 +64,12 @@ class FraudCheck
             }
         }
 
-        // Rule 3: New account (7 days) + 10,000+ TRY
-        if ($user->created_at->diffInDays(now()) < 7) {
-            if ($amountTry > 10000) {
+        // Rule 3: New Account Check
+        $newAccountDays = $this->configurationService->getInt('FRAUD_CHECK_NEW_ACCOUNT_DAYS', 7);
+        $newAccountAmountLimit = $this->configurationService->getFloat('FRAUD_CHECK_NEW_ACCOUNT_AMOUNT_LIMIT', 10000);
+
+        if ($user->created_at->diffInDays(now()) < $newAccountDays) {
+            if ($amountTry > $newAccountAmountLimit) {
                  $dto->status = TransactionStatus::PENDING_REVIEW;
                  SuspiciousActivityDetected::dispatch(
                     $user, 
@@ -71,12 +80,10 @@ class FraudCheck
             }
         }
 
-        // Rule 4: Transactions from same IP with different accounts
+        // Rule 4: IP Check
         if ($dto->ipAddress) {
-            // Check past transactions from this IP in last 24 hours maybe?
-            // "Transactions from same IP with different accounts" - Notify admin.
-            // If I find *any* transaction from this IP belonging to *another* user.
-            $txns = $this->transactionRepository->getTransactionsByIp($dto->ipAddress, 1440); // 24 hours
+            $ipWindow = $this->configurationService->getInt('FRAUD_CHECK_IP_WINDOW_MINUTES', 1440);
+            $txns = $this->transactionRepository->getTransactionsByIp($dto->ipAddress, $ipWindow);
             $otherUsers = $txns->pluck('sourceWallet.user.id')->unique()->reject(fn($id) => $id === $user->id);
             
             if ($otherUsers->isNotEmpty()) {

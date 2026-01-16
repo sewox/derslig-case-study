@@ -32,7 +32,7 @@ class TransactionController extends Controller
         $wallet = $this->walletService->getWalletById($request->wallet_id);
 
         if (! $wallet || $wallet->user_id !== $user->id) {
-            return response()->json(['message' => 'Wallet not found or does not belong to user'], 404);
+            return response()->json(['message' => __('messages.wallet.not_found_or_access')], 404);
         }
 
         try {
@@ -48,7 +48,7 @@ class TransactionController extends Controller
             $transaction = $this->transactionService->processTransaction($dto);
 
             return response()->json([
-                'message' => 'Deposit successful',
+                'message' => __('messages.transaction.deposit_success'),
                 'data' => $transaction,
             ]);
         } catch (Exception $e) {
@@ -63,7 +63,7 @@ class TransactionController extends Controller
         $wallet = $this->walletService->getWalletById($request->wallet_id);
 
         if (! $wallet || $wallet->user_id !== $user->id) {
-            return response()->json(['message' => 'Wallet not found or does not belong to user'], 404);
+            return response()->json(['message' => __('messages.wallet.not_found_or_access')], 404);
         }
 
         try {
@@ -79,7 +79,7 @@ class TransactionController extends Controller
             $transaction = $this->transactionService->processTransaction($dto);
 
             return response()->json([
-                'message' => 'Withdrawal successful',
+                'message' => __('messages.transaction.withdraw_success'),
                 'data' => $transaction,
             ]);
         } catch (Exception $e) {
@@ -98,7 +98,7 @@ class TransactionController extends Controller
             ->first();
 
         if (! $sourceWallet) {
-            return response()->json(['message' => 'Source wallet not found'], 404);
+            return response()->json(['message' => __('messages.wallet.source_not_found')], 404);
         }
 
         // Target User & Wallet
@@ -106,11 +106,11 @@ class TransactionController extends Controller
         $targetUser = User::where('email', $request->target_user_email)->first();
         
         if (! $targetUser) {
-            return response()->json(['message' => 'Target user not found'], 404);
+            return response()->json(['message' => __('messages.wallet.target_user_not_found')], 404);
         }
         
         if ($targetUser->id === $user->id) {
-             return response()->json(['message' => 'Cannot transfer to yourself'], 400);
+             return response()->json(['message' => __('messages.transaction.cannot_transfer_self')], 400);
         }
 
         $targetWallet = $this->walletService->getUserWallets($targetUser->id)
@@ -119,7 +119,7 @@ class TransactionController extends Controller
 
         if (! $targetWallet) {
             // Auto-create? Or fail?
-            return response()->json(['message' => 'Target user does not have a wallet for this currency'], 400);
+            return response()->json(['message' => __('messages.wallet.target_no_currency')], 400);
         }
 
         try {
@@ -135,7 +135,7 @@ class TransactionController extends Controller
             $transaction = $this->transactionService->processTransaction($dto);
 
             return response()->json([
-                'message' => 'Transfer successful',
+                'message' => __('messages.transaction.transfer_success'),
                 'data' => $transaction,
             ]);
         } catch (Exception $e) {

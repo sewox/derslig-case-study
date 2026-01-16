@@ -25,4 +25,6 @@ return [
         'target_user_not_found' => 'Hedef kullanıcı bulunamadı',
         'target_no_currency' => 'Hedef kullanıcının bu para birimi için cüzdanı yok',
     ],
-];
+    'error' => [
+        'duplicate_request' => 'Çok fazla istek gönderildi. Lütfen biraz bekleyin.',
+    ],

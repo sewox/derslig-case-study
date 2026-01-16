@@ -22,9 +22,11 @@ Route::prefix('v1')->group(function () {
         Route::get('wallets/{id}', [\App\Http\Controllers\Api\V1\WalletController::class, 'show']);
         
         // Transactions
-        Route::post('transactions/deposit', [\App\Http\Controllers\Api\V1\TransactionController::class, 'deposit']);
-        Route::post('transactions/withdraw', [\App\Http\Controllers\Api\V1\TransactionController::class, 'withdraw']);
-        Route::post('transactions/transfer', [\App\Http\Controllers\Api\V1\TransactionController::class, 'transfer']);
+        Route::middleware(\App\Http\Middleware\PreventDuplicateRequests::class)->group(function () {
+             Route::post('transactions/deposit', [\App\Http\Controllers\Api\V1\TransactionController::class, 'deposit']);
+             Route::post('transactions/withdraw', [\App\Http\Controllers\Api\V1\TransactionController::class, 'withdraw']);
+             Route::post('transactions/transfer', [\App\Http\Controllers\Api\V1\TransactionController::class, 'transfer']);
+        });
 
         // Admin Routes
         Route::middleware('App\Http\Middleware\CheckAdmin')->prefix('admin')->group(function () {

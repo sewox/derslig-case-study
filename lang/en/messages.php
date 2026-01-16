@@ -25,4 +25,6 @@ return [
         'target_user_not_found' => 'Target user not found',
         'target_no_currency' => 'Target user does not have a wallet for this currency',
     ],
-];
+    'error' => [
+        'duplicate_request' => 'Too many requests. Please wait a moment.',
+    ],

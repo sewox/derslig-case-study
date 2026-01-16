@@ -13,7 +13,7 @@
                     "name": "Register",
                     "request": {
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}",
@@ -74,7 +74,7 @@
                     ],
                     "request": {
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password\"\n}",
@@ -113,7 +113,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/auth/me",
                             "host": [
@@ -143,7 +143,7 @@
                             ]
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/auth/logout",
                             "host": [
@@ -178,7 +178,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/wallets",
                             "host": [
@@ -207,7 +207,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/wallets/:id",
                             "host": [
@@ -248,7 +248,7 @@
                             ]
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"amount\": 1000,\n    \"wallet_id\": \"WALLET_UUID_HERE\"\n}",
@@ -287,7 +287,7 @@
                             ]
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"amount\": 500,\n    \"wallet_id\": \"WALLET_UUID_HERE\"\n}",
@@ -326,7 +326,7 @@
                             ]
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"amount\": 100,\n    \"currency\": \"TRY\",\n    \"target_user_email\": \"jane@example.com\"\n}",
@@ -377,7 +377,7 @@
                     ],
                     "request": {
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
@@ -416,7 +416,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/admin/users",
                             "host": [
@@ -446,7 +446,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/admin/transactions",
                             "host": [
@@ -476,7 +476,7 @@
                             ]
                         },
                         "method": "GET",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "url": {
                             "raw": "{{base_url}}/api/v1/admin/suspicious-activities",
                             "host": [
@@ -506,7 +506,7 @@
                             ]
                         },
                         "method": "POST",
-                        "header": [],
+                        "header": [{"key": "Accept-Language", "value": "{{locale}}", "type": "text"}],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"status\": \"resolved\",\n    \"admin_note\": \"Investigated and cleared.\"\n}",
@@ -551,6 +551,11 @@
         {
             "key": "token",
             "value": "",
+            "type": "string"
+        },
+        {
+            "key": "locale",
+            "value": "tr",
             "type": "string"
         }
     ]

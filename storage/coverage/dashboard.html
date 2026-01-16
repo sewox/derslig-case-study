@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=11.0.12" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=11.0.12" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=11.0.12" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#16">App\Http\Controllers\Api\V1\AdminController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#16">App\Http\Controllers\Api\V1\AuthController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#22">App\Http\Controllers\Api\V1\TransactionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#14">App\Http\Controllers\Api\V1\WalletController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/SuspiciousActivity.php.html#14">App\Models\SuspiciousActivity</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#9">App\Services\BaseService</a></td><td class="text-right">12%</td></tr>
+       <tr><td><a href="Models/Transaction.php.html#16">App\Models\Transaction</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Models/Wallet.php.html#16">App\Models\Wallet</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#19">App\Services\Transaction\Pipes\FraudCheck</a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="Listeners/LogSuspiciousActivity.php.html#11">App\Listeners\LogSuspiciousActivity</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Models/PersonalAccessToken.php.html#8">App\Models\PersonalAccessToken</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Repository/TransactionRepository.php.html#9">App\Repository\TransactionRepository</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Http/Middleware/PreventDuplicateRequests.php.html#11">App\Http\Middleware\PreventDuplicateRequests</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Models/Configuration.php.html#7">App\Models\Configuration</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#10">App\Repository\BaseRepository</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Http/Middleware/SetLocale.php.html#9">App\Http\Middleware\SetLocale</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Services/ConfigurationService.php.html#10">App\Services\ConfigurationService</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/CheckInsufficientBalance.php.html#12">App\Services\Transaction\Pipes\CheckInsufficientBalance</a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#22">App\Http\Controllers\Api\V1\TransactionController</a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#16">App\Http\Controllers\Api\V1\AdminController</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#16">App\Http\Controllers\Api\V1\AuthController</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#14">App\Http\Controllers\Api\V1\WalletController</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#19">App\Services\Transaction\Pipes\FraudCheck</a></td><td class="text-right">18</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#10">App\Repository\BaseRepository</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Listeners/LogSuspiciousActivity.php.html#11">App\Listeners\LogSuspiciousActivity</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Models/PersonalAccessToken.php.html#8">App\Models\PersonalAccessToken</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/ConfigurationService.php.html#10">App\Services\ConfigurationService</a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Http/Middleware/PreventDuplicateRequests.php.html#11">App\Http\Middleware\PreventDuplicateRequests</a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Middleware/SetLocale.php.html#9">App\Http\Middleware\SetLocale</a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/CheckInsufficientBalance.php.html#12">App\Services\Transaction\Pipes\CheckInsufficientBalance</a></td><td class="text-right">4</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#18"><abbr title="App\Http\Controllers\Api\V1\AdminController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#25"><abbr title="App\Http\Controllers\Api\V1\AdminController::users">users</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#50"><abbr title="App\Http\Controllers\Api\V1\AdminController::transactions">transactions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#76"><abbr title="App\Http\Controllers\Api\V1\AdminController::suspiciousActivities">suspiciousActivities</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#101"><abbr title="App\Http\Controllers\Api\V1\AdminController::resolveSuspiciousActivity">resolveSuspiciousActivity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#18"><abbr title="App\Http\Controllers\Api\V1\AuthController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#22"><abbr title="App\Http\Controllers\Api\V1\AuthController::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#64"><abbr title="App\Http\Controllers\Api\V1\AuthController::login">login</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#110"><abbr title="App\Http\Controllers\Api\V1\AuthController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#137"><abbr title="App\Http\Controllers\Api\V1\AuthController::me">me</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#24"><abbr title="App\Http\Controllers\Api\V1\TransactionController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#30"><abbr title="App\Http\Controllers\Api\V1\TransactionController::deposit">deposit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#93"><abbr title="App\Http\Controllers\Api\V1\TransactionController::withdraw">withdraw</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#156"><abbr title="App\Http\Controllers\Api\V1\TransactionController::transfer">transfer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#16"><abbr title="App\Http\Controllers\Api\V1\WalletController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#20"><abbr title="App\Http\Controllers\Api\V1\WalletController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#47"><abbr title="App\Http\Controllers\Api\V1\WalletController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/SuspiciousActivity.php.html#28"><abbr title="App\Models\SuspiciousActivity::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/SuspiciousActivity.php.html#33"><abbr title="App\Models\SuspiciousActivity::transaction">transaction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Transaction.php.html#42"><abbr title="App\Models\Transaction::relatedTransaction">relatedTransaction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Wallet.php.html#41"><abbr title="App\Models\Wallet::incomingTransactions">incomingTransactions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Wallet.php.html#46"><abbr title="App\Models\Wallet::outgoingTransactions">outgoingTransactions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/TransactionRepository.php.html#46"><abbr title="App\Repository\TransactionRepository::getTransactionsByIp">getTransactionsByIp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#26"><abbr title="App\Services\BaseService::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#34"><abbr title="App\Services\BaseService::repository">repository</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#44"><abbr title="App\Services\BaseService::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#55"><abbr title="App\Services\BaseService::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#66"><abbr title="App\Services\BaseService::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#76"><abbr title="App\Services\BaseService::getAll">getAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#87"><abbr title="App\Services\BaseService::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ConfigurationService.php.html#31"><abbr title="App\Services\ConfigurationService::getString">getString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/LogSuspiciousActivity.php.html#30"><abbr title="App\Listeners\LogSuspiciousActivity::calculateRiskScore">calculateRiskScore</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Models/PersonalAccessToken.php.html#36"><abbr title="App\Models\PersonalAccessToken::findToken">findToken</abbr></a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#28"><abbr title="App\Services\Transaction\Pipes\FraudCheck::handle">handle</abbr></a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#40"><abbr title="App\Repository\BaseRepository::update">update</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#55"><abbr title="App\Repository\BaseRepository::delete">delete</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#98"><abbr title="App\Services\Transaction\Pipes\FraudCheck::getAmountAndCurrency">getAmountAndCurrency</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Http/Middleware/PreventDuplicateRequests.php.html#18"><abbr title="App\Http\Middleware\PreventDuplicateRequests::handle">handle</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Models/Configuration.php.html#11"><abbr title="App\Models\Configuration::booted">booted</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Http/Middleware/SetLocale.php.html#16"><abbr title="App\Http\Middleware\SetLocale::handle">handle</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/CheckInsufficientBalance.php.html#14"><abbr title="App\Services\Transaction\Pipes\CheckInsufficientBalance::handle">handle</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#156"><abbr title="App\Http\Controllers\Api\V1\TransactionController::transfer">transfer</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#30"><abbr title="App\Http\Controllers\Api\V1\TransactionController::deposit">deposit</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/TransactionController.php.html#93"><abbr title="App\Http\Controllers\Api\V1\TransactionController::withdraw">withdraw</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#28"><abbr title="App\Services\Transaction\Pipes\FraudCheck::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/WalletController.php.html#47"><abbr title="App\Http\Controllers\Api\V1\WalletController::show">show</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Listeners/LogSuspiciousActivity.php.html#30"><abbr title="App\Listeners\LogSuspiciousActivity::calculateRiskScore">calculateRiskScore</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AdminController.php.html#101"><abbr title="App\Http\Controllers\Api\V1\AdminController::resolveSuspiciousActivity">resolveSuspiciousActivity</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Api/v1/AuthController.php.html#64"><abbr title="App\Http\Controllers\Api\V1\AuthController::login">login</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Models/PersonalAccessToken.php.html#36"><abbr title="App\Models\PersonalAccessToken::findToken">findToken</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Middleware/PreventDuplicateRequests.php.html#18"><abbr title="App\Http\Middleware\PreventDuplicateRequests::handle">handle</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Middleware/SetLocale.php.html#16"><abbr title="App\Http\Middleware\SetLocale::handle">handle</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/CheckInsufficientBalance.php.html#14"><abbr title="App\Services\Transaction\Pipes\CheckInsufficientBalance::handle">handle</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Services/Transaction/Pipes/FraudCheck.php.html#98"><abbr title="App\Services\Transaction\Pipes\FraudCheck::getAmountAndCurrency">getAmountAndCurrency</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#40"><abbr title="App\Repository\BaseRepository::update">update</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Repository/BaseRepository.php.html#55"><abbr title="App\Repository\BaseRepository::delete">delete</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.12</a> using <a href="https://www.php.net/" target="_top">PHP 8.5.1</a> and <a href="https://phpunit.de/">PHPUnit 11.5.46</a> at Fri Jan 16 12:45:51 UTC 2026.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=11.0.12" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=11.0.12" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=11.0.12" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,0,1,0,0,0,0,1,2,9,2,22], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([31,0,0,0,0,0,1,0,4,5,2,67], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"DTO\/TransactionDTO.php.html#11\">App\\DTO\\TransactionDTO<\/a>"],[100,1,"<a href=\"Events\/SuspiciousActivityDetected.php.html#10\">App\\Events\\SuspiciousActivityDetected<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#16\">App\\Http\\Controllers\\Api\\V1\\AdminController<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#16\">App\\Http\\Controllers\\Api\\V1\\AuthController<\/a>"],[0,15,"<a href=\"Http\/Controllers\/Api\/v1\/TransactionController.php.html#22\">App\\Http\\Controllers\\Api\\V1\\TransactionController<\/a>"],[0,5,"<a href=\"Http\/Controllers\/Api\/v1\/WalletController.php.html#14\">App\\Http\\Controllers\\Api\\V1\\WalletController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Controller.php.html#5\">App\\Http\\Controllers\\Controller<\/a>"],[100,3,"<a href=\"Http\/Middleware\/CheckAdmin.php.html#9\">App\\Http\\Middleware\\CheckAdmin<\/a>"],[83.33333333333334,4,"<a href=\"Http\/Middleware\/PreventDuplicateRequests.php.html#11\">App\\Http\\Middleware\\PreventDuplicateRequests<\/a>"],[85.71428571428571,4,"<a href=\"Http\/Middleware\/SetLocale.php.html#9\">App\\Http\\Middleware\\SetLocale<\/a>"],[100,2,"<a href=\"Http\/Requests\/Auth\/LoginRequest.php.html#9\">App\\Http\\Requests\\Auth\\LoginRequest<\/a>"],[100,4,"<a href=\"Http\/Requests\/Auth\/RegisterRequest.php.html#10\">App\\Http\\Requests\\Auth\\RegisterRequest<\/a>"],[100,2,"<a href=\"Http\/Requests\/Transaction\/DepositRequest.php.html#11\">App\\Http\\Requests\\Transaction\\DepositRequest<\/a>"],[100,2,"<a href=\"Http\/Requests\/Transaction\/TransferRequest.php.html#11\">App\\Http\\Requests\\Transaction\\TransferRequest<\/a>"],[100,2,"<a href=\"Http\/Requests\/Transaction\/WithdrawRequest.php.html#11\">App\\Http\\Requests\\Transaction\\WithdrawRequest<\/a>"],[80,7,"<a href=\"Listeners\/LogSuspiciousActivity.php.html#11\">App\\Listeners\\LogSuspiciousActivity<\/a>"],[83.33333333333334,1,"<a href=\"Models\/Configuration.php.html#7\">App\\Models\\Configuration<\/a>"],[82.14285714285714,6,"<a href=\"Models\/PersonalAccessToken.php.html#8\">App\\Models\\PersonalAccessToken<\/a>"],[0,2,"<a href=\"Models\/SuspiciousActivity.php.html#14\">App\\Models\\SuspiciousActivity<\/a>"],[66.66666666666666,3,"<a href=\"Models\/Transaction.php.html#16\">App\\Models\\Transaction<\/a>"],[100,4,"<a href=\"Models\/User.php.html#15\">App\\Models\\User<\/a>"],[75,4,"<a href=\"Models\/Wallet.php.html#16\">App\\Models\\Wallet<\/a>"],[100,2,"<a href=\"Providers\/AppServiceProvider.php.html#7\">App\\Providers\\AppServiceProvider<\/a>"],[83.33333333333334,8,"<a href=\"Repository\/BaseRepository.php.html#10\">App\\Repository\\BaseRepository<\/a>"],[100,1,"<a href=\"Repository\/SuspiciousActivityRepository.php.html#9\">App\\Repository\\SuspiciousActivityRepository<\/a>"],[82.14285714285714,4,"<a href=\"Repository\/TransactionRepository.php.html#9\">App\\Repository\\TransactionRepository<\/a>"],[100,2,"<a href=\"Repository\/UserRepository.php.html#9\">App\\Repository\\UserRepository<\/a>"],[100,2,"<a href=\"Repository\/WalletRepository.php.html#9\">App\\Repository\\WalletRepository<\/a>"],[100,6,"<a href=\"Services\/AuthService.php.html#15\">App\\Services\\AuthService<\/a>"],[12.5,8,"<a href=\"Services\/BaseService.php.html#9\">App\\Services\\BaseService<\/a>"],[85.71428571428571,5,"<a href=\"Services\/ConfigurationService.php.html#10\">App\\Services\\ConfigurationService<\/a>"],[100,1,"<a href=\"Services\/ExchangeRateService.php.html#9\">App\\Services\\ExchangeRateService<\/a>"],[90.9090909090909,6,"<a href=\"Services\/FeeCalculator\/FeeCalculatorContext.php.html#10\">App\\Services\\FeeCalculator\\FeeCalculatorContext<\/a>"],[100,2,"<a href=\"Services\/FeeCalculator\/HighAmountFeeStrategy.php.html#9\">App\\Services\\FeeCalculator\\HighAmountFeeStrategy<\/a>"],[100,2,"<a href=\"Services\/FeeCalculator\/LowAmountFeeStrategy.php.html#9\">App\\Services\\FeeCalculator\\LowAmountFeeStrategy<\/a>"],[100,2,"<a href=\"Services\/FeeCalculator\/MediumAmountFeeStrategy.php.html#9\">App\\Services\\FeeCalculator\\MediumAmountFeeStrategy<\/a>"],[100,3,"<a href=\"Services\/Transaction\/Pipes\/CalculateFee.php.html#11\">App\\Services\\Transaction\\Pipes\\CalculateFee<\/a>"],[93.75,6,"<a href=\"Services\/Transaction\/Pipes\/CheckDailyLimit.php.html#16\">App\\Services\\Transaction\\Pipes\\CheckDailyLimit<\/a>"],[85.71428571428571,4,"<a href=\"Services\/Transaction\/Pipes\/CheckInsufficientBalance.php.html#12\">App\\Services\\Transaction\\Pipes\\CheckInsufficientBalance<\/a>"],[79.62962962962963,16,"<a href=\"Services\/Transaction\/Pipes\/FraudCheck.php.html#19\">App\\Services\\Transaction\\Pipes\\FraudCheck<\/a>"],[100,7,"<a href=\"Services\/TransactionService.php.html#19\">App\\Services\\TransactionService<\/a>"],[100,3,"<a href=\"Services\/WalletService.php.html#11\">App\\Services\\WalletService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"DTO\/TransactionDTO.php.html#13\">App\\DTO\\TransactionDTO::__construct<\/a>"],[100,1,"<a href=\"Events\/SuspiciousActivityDetected.php.html#17\">App\\Events\\SuspiciousActivityDetected::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#18\">App\\Http\\Controllers\\Api\\V1\\AdminController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#25\">App\\Http\\Controllers\\Api\\V1\\AdminController::users<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#50\">App\\Http\\Controllers\\Api\\V1\\AdminController::transactions<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#76\">App\\Http\\Controllers\\Api\\V1\\AdminController::suspiciousActivities<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Api\/v1\/AdminController.php.html#101\">App\\Http\\Controllers\\Api\\V1\\AdminController::resolveSuspiciousActivity<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#18\">App\\Http\\Controllers\\Api\\V1\\AuthController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#22\">App\\Http\\Controllers\\Api\\V1\\AuthController::register<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#64\">App\\Http\\Controllers\\Api\\V1\\AuthController::login<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#110\">App\\Http\\Controllers\\Api\\V1\\AuthController::logout<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/AuthController.php.html#137\">App\\Http\\Controllers\\Api\\V1\\AuthController::me<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/TransactionController.php.html#24\">App\\Http\\Controllers\\Api\\V1\\TransactionController::__construct<\/a>"],[0,4,"<a href=\"Http\/Controllers\/Api\/v1\/TransactionController.php.html#30\">App\\Http\\Controllers\\Api\\V1\\TransactionController::deposit<\/a>"],[0,4,"<a href=\"Http\/Controllers\/Api\/v1\/TransactionController.php.html#93\">App\\Http\\Controllers\\Api\\V1\\TransactionController::withdraw<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Api\/v1\/TransactionController.php.html#156\">App\\Http\\Controllers\\Api\\V1\\TransactionController::transfer<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/WalletController.php.html#16\">App\\Http\\Controllers\\Api\\V1\\WalletController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/v1\/WalletController.php.html#20\">App\\Http\\Controllers\\Api\\V1\\WalletController::index<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Api\/v1\/WalletController.php.html#47\">App\\Http\\Controllers\\Api\\V1\\WalletController::show<\/a>"],[100,3,"<a href=\"Http\/Middleware\/CheckAdmin.php.html#16\">App\\Http\\Middleware\\CheckAdmin::handle<\/a>"],[83.33333333333334,4,"<a href=\"Http\/Middleware\/PreventDuplicateRequests.php.html#18\">App\\Http\\Middleware\\PreventDuplicateRequests::handle<\/a>"],[85.71428571428571,4,"<a href=\"Http\/Middleware\/SetLocale.php.html#16\">App\\Http\\Middleware\\SetLocale::handle<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/LoginRequest.php.html#11\">App\\Http\\Requests\\Auth\\LoginRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/LoginRequest.php.html#16\">App\\Http\\Requests\\Auth\\LoginRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/RegisterRequest.php.html#12\">App\\Http\\Requests\\Auth\\RegisterRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/RegisterRequest.php.html#17\">App\\Http\\Requests\\Auth\\RegisterRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/RegisterRequest.php.html#26\">App\\Http\\Requests\\Auth\\RegisterRequest::messages<\/a>"],[100,1,"<a href=\"Http\/Requests\/Auth\/RegisterRequest.php.html#33\">App\\Http\\Requests\\Auth\\RegisterRequest::failedValidation<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/DepositRequest.php.html#13\">App\\Http\\Requests\\Transaction\\DepositRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/DepositRequest.php.html#18\">App\\Http\\Requests\\Transaction\\DepositRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/TransferRequest.php.html#13\">App\\Http\\Requests\\Transaction\\TransferRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/TransferRequest.php.html#18\">App\\Http\\Requests\\Transaction\\TransferRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/WithdrawRequest.php.html#13\">App\\Http\\Requests\\Transaction\\WithdrawRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/Transaction\/WithdrawRequest.php.html#18\">App\\Http\\Requests\\Transaction\\WithdrawRequest::rules<\/a>"],[100,1,"<a href=\"Listeners\/LogSuspiciousActivity.php.html#18\">App\\Listeners\\LogSuspiciousActivity::handle<\/a>"],[57.14285714285714,6,"<a href=\"Listeners\/LogSuspiciousActivity.php.html#30\">App\\Listeners\\LogSuspiciousActivity::calculateRiskScore<\/a>"],[83.33333333333334,1,"<a href=\"Models\/Configuration.php.html#11\">App\\Models\\Configuration::booted<\/a>"],[70.58823529411765,4,"<a href=\"Models\/PersonalAccessToken.php.html#36\">App\\Models\\PersonalAccessToken::findToken<\/a>"],[100,1,"<a href=\"Models\/PersonalAccessToken.php.html#73\">App\\Models\\PersonalAccessToken::booted<\/a>"],[100,1,"<a href=\"Models\/PersonalAccessToken.php.html#92\">App\\Models\\PersonalAccessToken::tokenable<\/a>"],[0,1,"<a href=\"Models\/SuspiciousActivity.php.html#28\">App\\Models\\SuspiciousActivity::user<\/a>"],[0,1,"<a href=\"Models\/SuspiciousActivity.php.html#33\">App\\Models\\SuspiciousActivity::transaction<\/a>"],[100,1,"<a href=\"Models\/Transaction.php.html#32\">App\\Models\\Transaction::sourceWallet<\/a>"],[100,1,"<a href=\"Models\/Transaction.php.html#37\">App\\Models\\Transaction::targetWallet<\/a>"],[0,1,"<a href=\"Models\/Transaction.php.html#42\">App\\Models\\Transaction::relatedTransaction<\/a>"],[100,1,"<a href=\"Models\/User.php.html#47\">App\\Models\\User::casts<\/a>"],[100,1,"<a href=\"Models\/User.php.html#56\">App\\Models\\User::wallets<\/a>"],[100,1,"<a href=\"Models\/User.php.html#61\">App\\Models\\User::suspiciousActivities<\/a>"],[100,1,"<a href=\"Models\/User.php.html#66\">App\\Models\\User::isAdmin<\/a>"],[100,1,"<a href=\"Models\/Wallet.php.html#27\">App\\Models\\Wallet::casts<\/a>"],[100,1,"<a href=\"Models\/Wallet.php.html#36\">App\\Models\\Wallet::user<\/a>"],[0,1,"<a href=\"Models\/Wallet.php.html#41\">App\\Models\\Wallet::incomingTransactions<\/a>"],[0,1,"<a href=\"Models\/Wallet.php.html#46\">App\\Models\\Wallet::outgoingTransactions<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#12\">App\\Providers\\AppServiceProvider::register<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#20\">App\\Providers\\AppServiceProvider::boot<\/a>"],[100,1,"<a href=\"Repository\/BaseRepository.php.html#17\">App\\Repository\\BaseRepository::__construct<\/a>"],[100,0,"<a href=\"Repository\/BaseRepository.php.html#25\">App\\Repository\\BaseRepository::model<\/a>"],[100,1,"<a href=\"Repository\/BaseRepository.php.html#30\">App\\Repository\\BaseRepository::create<\/a>"],[75,2,"<a href=\"Repository\/BaseRepository.php.html#40\">App\\Repository\\BaseRepository::update<\/a>"],[75,2,"<a href=\"Repository\/BaseRepository.php.html#55\">App\\Repository\\BaseRepository::delete<\/a>"],[100,1,"<a href=\"Repository\/BaseRepository.php.html#68\">App\\Repository\\BaseRepository::getAll<\/a>"],[100,1,"<a href=\"Repository\/BaseRepository.php.html#78\">App\\Repository\\BaseRepository::get<\/a>"],[100,1,"<a href=\"Repository\/SuspiciousActivityRepository.php.html#11\">App\\Repository\\SuspiciousActivityRepository::model<\/a>"],[100,1,"<a href=\"Repository\/TransactionRepository.php.html#11\">App\\Repository\\TransactionRepository::model<\/a>"],[100,1,"<a href=\"Repository\/TransactionRepository.php.html#16\">App\\Repository\\TransactionRepository::getDailyTransfersForUser<\/a>"],[100,1,"<a href=\"Repository\/TransactionRepository.php.html#27\">App\\Repository\\TransactionRepository::countUsersTransferredTo<\/a>"],[0,1,"<a href=\"Repository\/TransactionRepository.php.html#46\">App\\Repository\\TransactionRepository::getTransactionsByIp<\/a>"],[100,1,"<a href=\"Repository\/UserRepository.php.html#11\">App\\Repository\\UserRepository::model<\/a>"],[100,1,"<a href=\"Repository\/UserRepository.php.html#16\">App\\Repository\\UserRepository::findByEmail<\/a>"],[100,1,"<a href=\"Repository\/WalletRepository.php.html#11\">App\\Repository\\WalletRepository::model<\/a>"],[100,1,"<a href=\"Repository\/WalletRepository.php.html#16\">App\\Repository\\WalletRepository::getWalletsByUserId<\/a>"],[100,1,"<a href=\"Services\/AuthService.php.html#17\">App\\Services\\AuthService::__construct<\/a>"],[100,2,"<a href=\"Services\/AuthService.php.html#24\">App\\Services\\AuthService::register<\/a>"],[100,3,"<a href=\"Services\/AuthService.php.html#54\">App\\Services\\AuthService::login<\/a>"],[100,1,"<a href=\"Services\/BaseService.php.html#16\">App\\Services\\BaseService::__construct<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#26\">App\\Services\\BaseService::model<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#34\">App\\Services\\BaseService::repository<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#44\">App\\Services\\BaseService::create<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#55\">App\\Services\\BaseService::update<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#66\">App\\Services\\BaseService::delete<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#76\">App\\Services\\BaseService::getAll<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#87\">App\\Services\\BaseService::get<\/a>"],[100,2,"<a href=\"Services\/ConfigurationService.php.html#12\">App\\Services\\ConfigurationService::get<\/a>"],[100,1,"<a href=\"Services\/ConfigurationService.php.html#21\">App\\Services\\ConfigurationService::getInt<\/a>"],[100,1,"<a href=\"Services\/ConfigurationService.php.html#26\">App\\Services\\ConfigurationService::getFloat<\/a>"],[0,1,"<a href=\"Services\/ConfigurationService.php.html#31\">App\\Services\\ConfigurationService::getString<\/a>"],[100,1,"<a href=\"Services\/ExchangeRateService.php.html#19\">App\\Services\\ExchangeRateService::convertToTry<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/FeeCalculatorContext.php.html#12\">App\\Services\\FeeCalculator\\FeeCalculatorContext::__construct<\/a>"],[90,5,"<a href=\"Services\/FeeCalculator\/FeeCalculatorContext.php.html#16\">App\\Services\\FeeCalculator\\FeeCalculatorContext::calculateFee<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/HighAmountFeeStrategy.php.html#11\">App\\Services\\FeeCalculator\\HighAmountFeeStrategy::__construct<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/HighAmountFeeStrategy.php.html#15\">App\\Services\\FeeCalculator\\HighAmountFeeStrategy::calculate<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/LowAmountFeeStrategy.php.html#11\">App\\Services\\FeeCalculator\\LowAmountFeeStrategy::__construct<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/LowAmountFeeStrategy.php.html#15\">App\\Services\\FeeCalculator\\LowAmountFeeStrategy::calculate<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/MediumAmountFeeStrategy.php.html#11\">App\\Services\\FeeCalculator\\MediumAmountFeeStrategy::__construct<\/a>"],[100,1,"<a href=\"Services\/FeeCalculator\/MediumAmountFeeStrategy.php.html#15\">App\\Services\\FeeCalculator\\MediumAmountFeeStrategy::calculate<\/a>"],[100,1,"<a href=\"Services\/Transaction\/Pipes\/CalculateFee.php.html#13\">App\\Services\\Transaction\\Pipes\\CalculateFee::__construct<\/a>"],[100,2,"<a href=\"Services\/Transaction\/Pipes\/CalculateFee.php.html#17\">App\\Services\\Transaction\\Pipes\\CalculateFee::handle<\/a>"],[100,1,"<a href=\"Services\/Transaction\/Pipes\/CheckDailyLimit.php.html#18\">App\\Services\\Transaction\\Pipes\\CheckDailyLimit::__construct<\/a>"],[93.33333333333333,5,"<a href=\"Services\/Transaction\/Pipes\/CheckDailyLimit.php.html#25\">App\\Services\\Transaction\\Pipes\\CheckDailyLimit::handle<\/a>"],[85.71428571428571,4,"<a href=\"Services\/Transaction\/Pipes\/CheckInsufficientBalance.php.html#14\">App\\Services\\Transaction\\Pipes\\CheckInsufficientBalance::handle<\/a>"],[100,1,"<a href=\"Services\/Transaction\/Pipes\/FraudCheck.php.html#21\">App\\Services\\Transaction\\Pipes\\FraudCheck::__construct<\/a>"],[72.22222222222221,10,"<a href=\"Services\/Transaction\/Pipes\/FraudCheck.php.html#28\">App\\Services\\Transaction\\Pipes\\FraudCheck::handle<\/a>"],[80,3,"<a href=\"Services\/Transaction\/Pipes\/FraudCheck.php.html#98\">App\\Services\\Transaction\\Pipes\\FraudCheck::getAmountAndCurrency<\/a>"],[100,2,"<a href=\"Services\/Transaction\/Pipes\/FraudCheck.php.html#110\">App\\Services\\Transaction\\Pipes\\FraudCheck::blockWalletAndThrow<\/a>"],[100,1,"<a href=\"Services\/TransactionService.php.html#21\">App\\Services\\TransactionService::__construct<\/a>"],[100,1,"<a href=\"Services\/TransactionService.php.html#29\">App\\Services\\TransactionService::processTransaction<\/a>"],[100,5,"<a href=\"Services\/TransactionService.php.html#72\">App\\Services\\TransactionService::updateBalances<\/a>"],[100,1,"<a href=\"Services\/WalletService.php.html#13\">App\\Services\\WalletService::__construct<\/a>"],[100,1,"<a href=\"Services\/WalletService.php.html#18\">App\\Services\\WalletService::getUserWallets<\/a>"],[100,1,"<a href=\"Services\/WalletService.php.html#23\">App\\Services\\WalletService::getWalletById<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

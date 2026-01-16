@@ -28,19 +28,23 @@ class TransactionService extends BaseService
 
     public function processTransaction(TransactionDTO $dto): Transaction
     {
-        return DB::transaction(function () use ($dto) {
-            // 1. Run Pipeline (Validation, Fee Calculation, Rules)
-            /** @var TransactionDTO $processedDto */
-            $processedDto = $this->pipeline
-                ->send($dto)
-                ->through([
-                    CheckInsufficientBalance::class,
-                    \App\Services\Transaction\Pipes\CheckDailyLimit::class,
-                    CalculateFee::class,
-                    \App\Services\Transaction\Pipes\FraudCheck::class,
-                ])
-                ->thenReturn();
+        // 1. Run Pipeline (Validation, Fee Calculation, Rules)
+        // Pipeline runs BEFORE DB transaction to allow Fraud/Validation exceptions 
+        // to stop the process WITHOUT rolling back side-effects like "Suspicious Activity Logging" 
+        // (if those logs are written synchronously).
+        
+        /** @var TransactionDTO $processedDto */
+        $processedDto = $this->pipeline
+            ->send($dto)
+            ->through([
+                CheckInsufficientBalance::class,
+                \App\Services\Transaction\Pipes\CheckDailyLimit::class,
+                CalculateFee::class,
+                \App\Services\Transaction\Pipes\FraudCheck::class,
+            ])
+            ->thenReturn();
 
+        return DB::transaction(function () use ($processedDto) {
             // 2. Create Transaction Record
             // Determine active wallet for currency context
             $activeWallet = $processedDto->sourceWallet ?? $processedDto->targetWallet;

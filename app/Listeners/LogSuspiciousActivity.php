@@ -8,9 +8,9 @@ use App\Enums\SuspiciousActivityStatus;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class LogSuspiciousActivity implements ShouldQueue
+class LogSuspiciousActivity
 {
-    use InteractsWithQueue;
+    // use InteractsWithQueue;
 
     /**
      * Handle the event.

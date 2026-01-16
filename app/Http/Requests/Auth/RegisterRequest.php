@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.unique' => 'Bu e-posta adresi ile daha önce kayıt olunmuş.',
+            'email.unique' => __('messages.auth.email_taken'),
         ];
     }
 
@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
     {
         throw new \Illuminate\Http\Exceptions\HttpResponseException(
             response()->json([
-                'message' => 'Verilen bilgiler geçersiz.',
+                'message' => __('messages.auth.validation_error'),
                 'errors' => $validator->errors(),
             ], 422)
         );

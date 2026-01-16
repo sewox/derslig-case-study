@@ -24,7 +24,7 @@ class CheckInsufficientBalance
             if ($dto->sourceWallet->balance < $totalRequired) {
                 // Since this runs before DB transaction or maybe inside, we can throw exception
                 // Custom exception is better 'InsufficientBalanceException'
-                throw new InvalidArgumentException("Insufficient Balance");
+                throw new InvalidArgumentException(__("messages.transaction.insufficient_balance"));
             }
         }
 

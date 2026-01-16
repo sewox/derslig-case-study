@@ -13,7 +13,7 @@ use Exception;
 
 class CheckDailyLimit
 {
-    protected const DAILY_LIMIT_TRY = 50000.0;
+    protected const DAILY_LIMIT_TRY = 500000.0;
 
     public function __construct(
         protected TransactionRepository $transactionRepository,
@@ -31,7 +31,7 @@ class CheckDailyLimit
             );
 
             if ($currentAmountTry > self::DAILY_LIMIT_TRY) {
-                 throw new Exception("Transaction exceeds daily limit.");
+                 throw new Exception(__("messages.transaction.transaction_exceeds_limit"));
             }
 
             // Fetch History
@@ -45,7 +45,7 @@ class CheckDailyLimit
             }
 
             if (($totalDailyAmountTry + $currentAmountTry) > self::DAILY_LIMIT_TRY) {
-                throw new Exception("Daily transfer limit of 50,000 TRY exceeded.");
+                throw new Exception(__('messages.transaction.daily_limit_exceeded', ['limit' => self::DAILY_LIMIT_TRY]));
             }
         }
 

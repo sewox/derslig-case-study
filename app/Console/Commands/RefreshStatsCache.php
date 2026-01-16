@@ -11,7 +11,7 @@ class RefreshStatsCache extends Command
      *
      * @var string
      */
-    protected $signature = 'stats:refresh-cache';
+    protected $signature = 'app:refresh-stats-cache';
 
     protected $description = 'Refresh statistics cache for admin dashboard';
 

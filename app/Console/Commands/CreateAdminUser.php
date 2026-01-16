@@ -15,7 +15,7 @@ class CreateAdminUser extends Command
 
     protected $description = 'Create a new admin user';
 
-    public function handle(APP\Repository\UserRepository $userRepository, \App\Repository\WalletRepository $walletRepository)
+    public function handle(\App\Repository\UserRepository $userRepository, \App\Repository\WalletRepository $walletRepository)
     {
         $name = $this->argument('name');
         $email = $this->argument('email');

@@ -11,7 +11,7 @@ class CheckPendingTransactions extends Command
      *
      * @var string
      */
-    protected $signature = 'transactions:check-pending';
+    protected $signature = 'app:check-pending-transactions';
 
     protected $description = 'Check for transactions pending review older than 24 hours';
 

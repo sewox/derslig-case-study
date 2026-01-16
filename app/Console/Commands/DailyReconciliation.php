@@ -11,7 +11,7 @@ class DailyReconciliation extends Command
      *
      * @var string
      */
-    protected $signature = 'wallet:daily-reconciliation';
+    protected $signature = 'app:daily-reconciliation';
 
     protected $description = 'Generate daily reconciliation report for transactions';
 

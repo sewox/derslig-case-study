@@ -28,3 +28,4 @@ return [
     'error' => [
         'duplicate_request' => 'Çok fazla istek gönderildi. Lütfen biraz bekleyin.',
     ],
+];

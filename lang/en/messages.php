@@ -28,3 +28,4 @@ return [
     'error' => [
         'duplicate_request' => 'Too many requests. Please wait a moment.',
     ],
+];

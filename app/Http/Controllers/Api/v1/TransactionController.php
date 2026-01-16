@@ -17,6 +17,8 @@ use App\Services\WalletService;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
+use OpenApi\Attributes as OA;
+
 class TransactionController extends Controller
 {
     public function __construct(
@@ -25,6 +27,38 @@ class TransactionController extends Controller
     ) {
     }
 
+    #[OA\Post(
+        path: "/api/v1/transactions/deposit",
+        operationId: "deposit",
+        summary: "Deposit funds",
+        tags: ["Transactions"],
+        description: "Deposit funds into a wallet",
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["amount", "wallet_id"],
+                properties: [
+                    new OA\Property(property: "amount", type: "number", format: "float", example: 100.50),
+                    new OA\Property(property: "wallet_id", type: "string", format: "uuid", example: "uuid-string-here")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Deposit Successful",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "message", type: "string", example: "Deposit successful"),
+                        new OA\Property(property: "data", type: "object")
+                    ]
+                )
+            ),
+            new OA\Response(response: 400, description: "Error"),
+            new OA\Response(response: 404, description: "Wallet not found")
+        ]
+    )]
     public function deposit(DepositRequest $request): JsonResponse
     {
         $user = $request->user();
@@ -56,6 +90,38 @@ class TransactionController extends Controller
         }
     }
 
+    #[OA\Post(
+        path: "/api/v1/transactions/withdraw",
+        operationId: "withdraw",
+        summary: "Withdraw funds",
+        tags: ["Transactions"],
+        description: "Withdraw funds from a wallet",
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["amount", "wallet_id"],
+                properties: [
+                    new OA\Property(property: "amount", type: "number", format: "float", example: 50.00),
+                    new OA\Property(property: "wallet_id", type: "string", format: "uuid", example: "uuid-string-here")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Withdraw Successful",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "message", type: "string", example: "Withdrawal successful"),
+                        new OA\Property(property: "data", type: "object")
+                    ]
+                )
+            ),
+            new OA\Response(response: 400, description: "Error or Insufficient Funds"),
+            new OA\Response(response: 404, description: "Wallet not found")
+        ]
+    )]
     public function withdraw(WithdrawRequest $request): JsonResponse
     {
         $user = $request->user();
@@ -87,6 +153,39 @@ class TransactionController extends Controller
         }
     }
 
+    #[OA\Post(
+        path: "/api/v1/transactions/transfer",
+        operationId: "transfer",
+        summary: "Transfer funds",
+        tags: ["Transactions"],
+        description: "Transfer funds to another user",
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["amount", "currency", "target_user_email"],
+                properties: [
+                    new OA\Property(property: "amount", type: "number", format: "float", example: 10.00),
+                    new OA\Property(property: "currency", type: "string", example: "TRY"),
+                    new OA\Property(property: "target_user_email", type: "string", format: "email", example: "jane@example.com")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Transfer Successful",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "message", type: "string", example: "Transfer successful"),
+                        new OA\Property(property: "data", type: "object")
+                    ]
+                )
+            ),
+            new OA\Response(response: 400, description: "Error"),
+            new OA\Response(response: 404, description: "User or Wallet not found")
+        ]
+    )]
     public function transfer(TransferRequest $request): JsonResponse
     {
         $user = $request->user();

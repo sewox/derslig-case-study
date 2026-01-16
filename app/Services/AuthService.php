@@ -59,6 +59,9 @@ class AuthService extends BaseService
             return null;
         }
 
+        // Revoke all existing tokens to enforce single session
+        $user->tokens()->delete();
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return [

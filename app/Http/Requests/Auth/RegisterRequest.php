@@ -22,4 +22,11 @@ class RegisterRequest extends FormRequest
             'password' => ['required', 'confirmed', Password::defaults()],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'Bu e-posta adresi ile daha önce kayıt olunmuş.',
+        ];
+    }
 }

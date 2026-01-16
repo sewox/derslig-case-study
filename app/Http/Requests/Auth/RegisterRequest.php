@@ -29,4 +29,14 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'Bu e-posta adresi ile daha önce kayıt olunmuş.',
         ];
     }
+
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new \Illuminate\Http\Exceptions\HttpResponseException(
+            response()->json([
+                'message' => 'Verilen bilgiler geçersiz.',
+                'errors' => $validator->errors(),
+            ], 422)
+        );
+    }
 }
